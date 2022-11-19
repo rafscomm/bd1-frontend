@@ -27,7 +27,6 @@ export function Login(): JSX.Element {
         <Input type="password" placeholder="Senha" onChange={(e): void => setSenha(e.target.value)} />
         <div className="button-container">
           <Button onClick={onLogin}>Entrar</Button>
-          <Button onClick={() => navigate('/home')}>Home</Button>
         </div>
       </div>
     </Container>

@@ -1,3 +1,11 @@
+import { Sidebar } from '../../components/Sidebar/Sidebar';
+import { PageContainer } from '../../styles/PageContainer';
+
 export function Home(): JSX.Element {
-  return <h1>hello</h1>;
+  return (
+    <PageContainer>
+      <Sidebar />
+      <h1>Home</h1>
+    </PageContainer>
+  );
 }

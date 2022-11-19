@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-export const Div = styled.div`
+export const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 15%;
   height: 100vh;
   background-color: #2c73d2;
-
   .link {
     display: flex;
     flex-direction: row;
@@ -14,20 +14,16 @@ export const Div = styled.div`
     text-decoration: none;
     color: #fff;
     border-top: solid #fff 1px;
+    transition: all 04s;
+    :hover {
+      opacity: 0.4;
+    }
   }
-
   .link_text {
     margin-left: 8px;
   }
 `;
-export const DivMain = styled.div`
-  display: flex;
-`;
 
-export const Main = styled.main`
-  width: 100%;
-  padding: 20px;
-`;
 export const TopSection = styled.div`
   display: flex;
   align-items: center;
