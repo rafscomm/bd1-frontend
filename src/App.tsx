@@ -6,11 +6,11 @@ import Home from "./pages/Home/home";
 const App = () =>{
   return(
   <BrowserRouter>
-    <NavBar />
-    <Routes>
-      <Route path= "/" element = {<Home />} />
-    </Routes>
-  
+    <NavBar>
+      <Routes>
+        <Route path= "/" element = {<Home />} />
+      </Routes>
+    </NavBar>
   </BrowserRouter>  
   )
 

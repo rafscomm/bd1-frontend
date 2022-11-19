@@ -9,9 +9,9 @@ function Home(){
   
   return(
     
-    <DivMain>
+    
       <h1>hello</h1>
-    </DivMain>
+    
     
   )
 }

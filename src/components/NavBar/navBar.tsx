@@ -1,4 +1,4 @@
-import { Li, Nav } from "./styles";
+import { Div, DivMain,Main, TopSection } from "./styles";
 import {FaBars, FaCar, FaCartArrowDown, FaCashRegister, FaDollyFlatbed, FaTh, FaUser} from "react-icons/fa"
 import { NavLink } from "react-router-dom";
 import { ReactNode } from "react";
@@ -42,14 +42,14 @@ function NavBar({children}:NavBarProps){
     }
 ]
   return(
-    <div className="main">
-      <div className="sidebar">
-        <div className="top-section">
+    <DivMain>
+      <Div>
+        <TopSection>
           <h1>Na Cars</h1>
           <div className="bars">
             <FaBars/>
           </div>
-        </div>
+        </TopSection>
         {sideItens.map((item,index)=>(
             <NavLink to={item.path} key = {index} className= "link" activeClassName = "active">
               <div className="icon">{item.icon}</div>
@@ -57,9 +57,9 @@ function NavBar({children}:NavBarProps){
             </NavLink>
           ))
         }
-      </div>
-      <main>{children}</main>
-    </div>
+      </Div>
+      <Main>{children}</Main>
+    </DivMain>
  )
 
 }
