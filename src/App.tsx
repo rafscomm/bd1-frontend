@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import NavBar from './components/NavBar/navBar';
-import Home from './pages/Home/home';
+import { SideBar } from './components/NavBar/navBar';
+import { Home } from './pages/Home/home';
 import { Login } from './pages/Login';
 
 const App = () => {
@@ -10,11 +10,11 @@ const App = () => {
   return (
     <BrowserRouter>
       {logged ? (
-        <NavBar>
+        <SideBar>
           <Routes>
             <Route path="/home" element={<Home />} />
           </Routes>
-        </NavBar>
+        </SideBar>
       ) : (
         <Routes>
           <Route path="/login" element={<Login />} />
