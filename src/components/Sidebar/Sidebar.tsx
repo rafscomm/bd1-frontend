@@ -6,7 +6,7 @@ import { SidebarContainer, TopSection } from './styles';
 export function Sidebar(): JSX.Element {
   const sideItens = [
     {
-      path: '/',
+      path: '/home',
       name: 'Home',
       icon: <FaTh />,
     },
@@ -16,7 +16,7 @@ export function Sidebar(): JSX.Element {
       icon: <FaCar />,
     },
     {
-      path: '/venda',
+      path: '/vendas',
       name: 'Vendas',
       icon: <FaCartArrowDown />,
     },
