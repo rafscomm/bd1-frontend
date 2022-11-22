@@ -7,6 +7,8 @@ import { ProdutoInterface } from '../../interfaces/ProdutoInterface';
 import { getProdutos } from '../../services/produtos';
 import { PageContainer } from '../../styles/PageContainer';
 import { Container, ProductList } from './styles';
+import { AddButtom } from '../../components/AddButtom';
+import { DeleteButtom } from '../../components/DeleteButtom';
 
 // const produtos = [
 //   {
@@ -61,6 +63,7 @@ export function Produtos(): JSX.Element {
           })}
         </ProductList>
       </Container>
+      <AddButtom />
     </PageContainer>
   );
 }
