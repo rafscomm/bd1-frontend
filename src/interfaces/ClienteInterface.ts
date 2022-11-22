@@ -1,7 +1,3 @@
-export interface ClienteInterface {
-  id: number;
-  idFuncion: number;
-}
 export interface PessoaFisica {
   cpf: string;
   nome: string;

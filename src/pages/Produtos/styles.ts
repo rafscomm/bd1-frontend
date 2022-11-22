@@ -14,6 +14,7 @@ export const Container = styled.div`
   }
 `;
 
+
 export const ProductList = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);

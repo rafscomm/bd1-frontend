@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { AiFillInfoCircle } from 'react-icons/ai';
 
 import { ProdutoInterface } from '../../interfaces/ProdutoInterface';
+import { DeleteButtom } from '../DeleteButtom';
 import { Modal } from '../Modal';
 import { Button, ProductCardStyled } from './styles';
 
@@ -29,6 +30,7 @@ export function ProductCard({ produto }: ProductCardProps): JSX.Element {
         </div>
         <p>{produto.nome}</p>
       </div>
+      <DeleteButtom />
       <Button>Comprar</Button>
       {modalIsOpen && (
         <Modal onClose={(): void => setModalIsOpen(false)}>
