@@ -1,17 +1,17 @@
-*{
-  margin:0;
+* {
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
+
 }
 
 
 body {
   margin: 0;
-  font-family: cursive
+  font-family: cursive;
+
 }
 
 code {
-  font-family: cursive
-    monospace;
+  font-family: cursive monospace;
 }
