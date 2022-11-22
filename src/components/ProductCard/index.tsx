@@ -8,9 +8,10 @@ import { Button, ProductCardStyled } from './styles';
 
 interface ProductCardProps {
   produto: ProdutoInterface;
+  handleOpen: () => void;
 }
 
-export function ProductCard({ produto }: ProductCardProps): JSX.Element {
+export function ProductCard({ produto, handleOpen }: ProductCardProps): JSX.Element {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
@@ -23,22 +24,12 @@ export function ProductCard({ produto }: ProductCardProps): JSX.Element {
             <h1 style={{ color: '#FFC75F', fontSize: 20 }}>$</h1>
             <h3>{produto.price}</h3>
           </div>
-          <AiFillInfoCircle
-            style={{ color: '808080', marginRight: 10, fontSize: 20 }}
-            onClick={(): void => setModalIsOpen(true)}
-          />
+          <AiFillInfoCircle style={{ color: '808080', marginRight: 10, fontSize: 20 }} onClick={handleOpen} />
         </div>
         <p>{produto.nome}</p>
       </div>
       <DeleteButtom />
       <Button>Comprar</Button>
-      {modalIsOpen && (
-        <Modal onClose={(): void => setModalIsOpen(false)}>
-          <p>Nome:</p>
-          <p>Marca:</p>
-          <p>Modelo:</p>
-        </Modal>
-      )}
     </ProductCardStyled>
   );
 }
