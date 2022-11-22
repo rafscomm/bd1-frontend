@@ -1,35 +1,35 @@
 import { useState } from 'react';
 import { AiFillInfoCircle } from 'react-icons/ai';
 
+import { ProdutoInterface } from '../../interfaces/ProdutoInterface';
 import { Modal } from '../Modal';
 import { Button, ProductCardStyled } from './styles';
 
 interface ProductCardProps {
-  produtos: any[];
+  produto: ProdutoInterface;
 }
 
-export function ProductCard({ produtos }: ProductCardProps): JSX.Element {
+export function ProductCard({ produto }: ProductCardProps): JSX.Element {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
-    <>
-      <ProductCardStyled key={produtos[1].id}>
-        <div>
-          <img src="./assets/carro.jpg" alt="" />
-          <div className="" style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}>
-            <div style={{ display: 'flex' }}>
-              <h1 style={{ color: '#FFC75F', fontSize: 20 }}>$</h1>
-              <h3>{produtos[1].price}</h3>
-            </div>
-            <AiFillInfoCircle
-              style={{ color: '808080', marginRight: 10, fontSize: 20 }}
-              onClick={(): void => setModalIsOpen(true)}
-            />
+    <ProductCardStyled>
+      <div>
+        <img src={produto.imageURL} alt="" />
+
+        <div className="" style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}>
+          <div style={{ display: 'flex' }}>
+            <h1 style={{ color: '#FFC75F', fontSize: 20 }}>$</h1>
+            <h3>{produto.price}</h3>
           </div>
-          <p>{produtos[1].name}</p>
+          <AiFillInfoCircle
+            style={{ color: '808080', marginRight: 10, fontSize: 20 }}
+            onClick={(): void => setModalIsOpen(true)}
+          />
         </div>
-        <Button>Comprar</Button>
-      </ProductCardStyled>
+        <p>{produto.nome}</p>
+      </div>
+      <Button>Comprar</Button>
       {modalIsOpen && (
         <Modal onClose={(): void => setModalIsOpen(false)}>
           <p>Nome:</p>
@@ -37,7 +37,7 @@ export function ProductCard({ produtos }: ProductCardProps): JSX.Element {
           <p>Modelo:</p>
         </Modal>
       )}
-    </>
+    </ProductCardStyled>
   );
 }
 
