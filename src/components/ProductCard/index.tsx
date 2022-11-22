@@ -11,10 +11,6 @@ interface ProductCardProps {
 export function ProductCard({ produtos }: ProductCardProps): JSX.Element {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  // const openModal = () => {
-  //   setModalOpen(true);
-  // };
-
   return (
     <>
       <ProductCardStyled key={produtos[1].id}>
