@@ -10,3 +10,8 @@ export const getProdutos = async (): Promise<any> => {
   const userDate = await client.get('/produtos');
   return userDate;
 };
+
+export const setProdutos = async () : Promise<any> =>{
+  const userDate = await client.post('/produtos');
+  return userDate;
+};

@@ -13,9 +13,7 @@ export const ProductCardStyled = styled.div`
   img {
     width: 100%;
   }
-  :hover {
-    transform: scale(1.01);
-  }
+
 `;
 
 export const Button = styled.button`

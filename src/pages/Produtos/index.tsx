@@ -9,6 +9,7 @@ import { PageContainer } from '../../styles/PageContainer';
 import { Container, ProductList } from './styles';
 import { AddButtom } from '../../components/AddButtom';
 import { DeleteButtom } from '../../components/DeleteButtom';
+import { Modal } from '../../components/Modal';
 
 // const produtos = [
 //   {
@@ -40,12 +41,19 @@ import { DeleteButtom } from '../../components/DeleteButtom';
 
 export function Produtos(): JSX.Element {
   const [produtos, setProdutos] = useState<ProdutoInterface[]>([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   useEffect(() => {
     const produtosAPI = async () => {
       await getProdutos().then((response) => setProdutos(response.data));
     };
     produtosAPI();
   }, []);
+  const handleOpenModal = (): void => {
+    setModalIsOpen(true);
+  };
+  const handleCloseModal = (): void => {
+    setModalIsOpen(false);
+  };
   return (
     <PageContainer>
       <Sidebar />
@@ -57,11 +65,19 @@ export function Produtos(): JSX.Element {
           <Categories title="SUVs" />
         </div>
         <div className="Separator" />
+
         <ProductList>
           {produtos.map((produto) => {
-            return <ProductCard produto={produto} key={produto.id} />;
+            return <ProductCard handleOpen={handleOpenModal} produto={produto} key={produto.id} />;
           })}
         </ProductList>
+        {modalIsOpen && (
+          <Modal onClose={handleCloseModal}>
+            <p>Nome:</p>
+            <p>Marca:</p>
+            <p>Modelo:</p>
+          </Modal>
+        )}
       </Container>
       <AddButtom />
     </PageContainer>
