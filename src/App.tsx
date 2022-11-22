@@ -2,7 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { PrivateRoute } from './components/PrivateRoute';
 import { Caixa } from './pages/Caixa';
-import { Clientes } from './pages/Clientes/indes';
+import { Clientes } from './pages/Clientes';
 import { Fornecedores } from './pages/Fornecedores';
 import { Home } from './pages/Home/home';
 import { Login } from './pages/Login';

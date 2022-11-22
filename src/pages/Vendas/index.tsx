@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
 import { PageContainer } from '../../styles/PageContainer';
-import { HeaderContainer, TableContainer } from './styles';
+import { TableContainer } from './styles';
+import { HeaderTable } from '../../components/HeaderTable';
 import { VendasInterface } from '../../interfaces/VendasInterface';
 import { getVendas } from '../../services/vendas';
 
@@ -18,8 +19,7 @@ export function Vendas(): JSX.Element {
   return (
     <PageContainer>
       <Sidebar />
-      <HeaderContainer>
-        <h1>Vendas realizadas</h1>
+      <HeaderTable title="Vendas">
         <TableContainer>
           <table>
             <tr>
@@ -38,7 +38,7 @@ export function Vendas(): JSX.Element {
             </tr>
           </table>
         </TableContainer>
-      </HeaderContainer>
+      </HeaderTable>
     </PageContainer>
   );
 }

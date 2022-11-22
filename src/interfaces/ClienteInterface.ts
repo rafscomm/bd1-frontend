@@ -1,8 +1,5 @@
-export interface ClienteInterface {
-  id: number;
-  idFuncion: number;
-}
 export interface PessoaFisica {
+  idFuncion: number;
   cpf: string;
   nome: string;
   endereco: string;
@@ -10,6 +7,7 @@ export interface PessoaFisica {
   idCliente: number;
 }
 export interface PessoaJuridica {
+  idFuncion: number;
   cnpj: string;
   nome_fantasia: string;
   endereco: string;
