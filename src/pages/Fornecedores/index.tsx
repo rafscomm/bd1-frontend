@@ -1,12 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HeaderTable } from '../../components/HeaderTable';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
 import { PageContainer } from '../../styles/PageContainer';
 import { Fornecedor } from '../../interfaces/FornecedorInterface';
 import { TableContainer } from './styles';
+import { getFornecedores } from '../../services/fornecedores';
 
 export function Fornecedores(): JSX.Element {
   const [fornecedores, setFornecedores] = useState<Fornecedor[]>([]);
+
+  useEffect(() => {
+    const showFornecedores = async () => {
+      await getFornecedores().then((response) => setFornecedores(response.data));
+    };
+    showFornecedores();
+  }, []);
 
   return (
     <PageContainer>
