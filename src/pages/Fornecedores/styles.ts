@@ -6,4 +6,4 @@ export const TableContainer = styled.div`
   margin-top: 32px;
   border: 2px #000 solid;
   border-radius: 5px;
-`
+`;
