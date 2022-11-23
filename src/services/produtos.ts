@@ -11,7 +11,12 @@ export const getProdutos = async (): Promise<any> => {
   return userDate;
 };
 
-export const sendProdutos = async (data:any) : Promise<any> =>{
+export const sendProdutos = async (data: any): Promise<any> => {
   const userDate = await client.post('/produtos/criar', data);
+  return userDate;
+};
+
+export const deleteProdutos = async (id: any): Promise<any> => {
+  const userDate = await client.delete('/produtos/deletar', id);
   return userDate;
 };

@@ -2,17 +2,22 @@ import { useState } from 'react';
 import { AiFillInfoCircle } from 'react-icons/ai';
 
 import { ProdutoInterface } from '../../interfaces/ProdutoInterface';
+import { deleteProdutos } from '../../services/produtos';
 import { DeleteButtom } from '../DeleteButtom';
 import { Modal } from '../Modal';
 import { Button, ProductCardStyled } from './styles';
 
 interface ProductCardProps {
   produto: ProdutoInterface;
-  handleOpen: () => void;
+  id: number;
 }
 
-export function ProductCard({ produto, handleOpen }: ProductCardProps): JSX.Element {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+export function ProductCard({ produto, id }: ProductCardProps): JSX.Element {
+  const deleteProduto = async (id: number) => {
+    await deleteProdutos(id).then((response) => {
+      console.log(response.data);
+    });
+  };
 
   return (
     <ProductCardStyled>
@@ -24,11 +29,10 @@ export function ProductCard({ produto, handleOpen }: ProductCardProps): JSX.Elem
             <h1 style={{ color: '#FFC75F', fontSize: 20 }}>$</h1>
             <h3>{produto.price}</h3>
           </div>
-          <AiFillInfoCircle style={{ color: '808080', marginRight: 10, fontSize: 20 }} onClick={handleOpen} />
         </div>
         <p>{produto.nome}</p>
       </div>
-      <DeleteButtom />
+      <DeleteButtom onClick={() => deleteProduto(id)} />
       <Button>Comprar</Button>
     </ProductCardStyled>
   );

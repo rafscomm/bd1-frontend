@@ -1,9 +1,14 @@
 import { AiFillDelete } from 'react-icons/ai';
+
 import { ButtomDelete } from './styles';
 
-export function DeleteButtom() {
+interface DeleteButtomProps {
+  onClick: () => void;
+}
+
+export function DeleteButtom({ onClick }: DeleteButtomProps): JSX.Element {
   return (
-    <ButtomDelete>
+    <ButtomDelete onClick={onClick}>
       <AiFillDelete />
     </ButtomDelete>
   );

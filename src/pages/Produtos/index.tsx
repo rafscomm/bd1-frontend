@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 
+import { AddButtom } from '../../components/AddButtom';
 import { Categories } from '../../components/Categories';
+import { Modal } from '../../components/Modal';
 import { ProductCard } from '../../components/ProductCard';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
 import { ProdutoInterface } from '../../interfaces/ProdutoInterface';
 import { getProdutos, sendProdutos } from '../../services/produtos';
 import { PageContainer } from '../../styles/PageContainer';
 import { Container, ProductList } from './styles';
-import { AddButtom } from '../../components/AddButtom';
-import { Modal } from '../../components/Modal';
 
 // const produtos = [
 //   {
@@ -48,7 +48,10 @@ export function Produtos(): JSX.Element {
   const [image, setImage] = useState('');
   useEffect(() => {
     const produtosAPI = async () => {
-      await getProdutos().then((response) => setProdutos(response.data));
+      await getProdutos().then((response) => {
+        setProdutos(response.data);
+        console.log(response.data);
+      });
     };
     produtosAPI();
   }, []);
@@ -78,7 +81,7 @@ export function Produtos(): JSX.Element {
 
         <ProductList>
           {produtos.map((produto) => {
-            return <ProductCard handleOpen={handleOpenModal} produto={produto} key={produto.id} />;
+            return <ProductCard produto={produto} key={produto.id} id={produto.id} />;
           })}
         </ProductList>
         {modalIsOpen && (
