@@ -22,22 +22,24 @@ export function Fornecedores(): JSX.Element {
       <HeaderTable title="Fornecedores">
         <TableContainer>
           <table>
-            <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>CNPJ</th>
-              <th>Empresa</th>
-            </tr>
-            <tr>
-              {fornecedores.map((fornecedor) => (
-                <>
-                  <th>{fornecedor.idEmpresa}</th>
-                  <th>{fornecedor.nomeFantasia}</th>
-                  <th>{fornecedor.cnpj}</th>
-                  <th>{fornecedor.empresa}</th>
-                </>
-              ))}
-            </tr>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CNPJ</th>
+                <th>Empresa</th>
+              </tr>
+            </thead>
+            {fornecedores.map((fornecedor) => (
+              <tbody>
+                <tr>
+                  <td>{fornecedor.idEmpresa}</td>
+                  <td>{fornecedor.nomeFantasia}</td>
+                  <td>{fornecedor.cnpj}</td>
+                  <td>{fornecedor.empresa}</td>
+                </tr>
+              </tbody>
+            ))}
           </table>
         </TableContainer>
       </HeaderTable>

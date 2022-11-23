@@ -22,20 +22,22 @@ export function Vendas(): JSX.Element {
       <HeaderTable title="Vendas">
         <TableContainer>
           <table>
-            <tr>
-              <th>ID</th>
-              <th>Cliente</th>
-              <th>Valor</th>
-            </tr>
-            <tr>
-              {vendas.map((venda) => (
-                <>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            {vendas.map((venda) => (
+              <tbody>
+                <tr>
                   <th>{venda.numero}</th>
                   <th>{venda.nome_cliente}</th>
                   <th>{venda.valor}</th>
-                </>
-              ))}
-            </tr>
+                </tr>
+              </tbody>
+            ))}
           </table>
         </TableContainer>
       </HeaderTable>
