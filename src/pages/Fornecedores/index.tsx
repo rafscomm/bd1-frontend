@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react';
+
 import { HeaderTable } from '../../components/HeaderTable';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
-import { PageContainer } from '../../styles/PageContainer';
 import { Fornecedor } from '../../interfaces/FornecedorInterface';
-import { TableContainer } from './styles';
 import { getFornecedores } from '../../services/fornecedores';
+import { PageContainer } from '../../styles/PageContainer';
+import { TableContainer } from './styles';
 
 export function Fornecedores(): JSX.Element {
-  const [fornecedores, setFornecedores] = useState<Fornecedor[]>([]);
+  const [fornecedores, setFornecedores] = useState<any[]>([]);
 
   useEffect(() => {
     const showFornecedores = async () => {
-      await getFornecedores().then((response) => setFornecedores(response.data));
+      await getFornecedores().then((response) => {
+        setFornecedores(response.data);
+        console.log(response.data);
+      });
     };
     showFornecedores();
   }, []);
@@ -27,19 +31,17 @@ export function Fornecedores(): JSX.Element {
                 <th>ID</th>
                 <th>Nome</th>
                 <th>CNPJ</th>
-                <th>Empresa</th>
               </tr>
             </thead>
-            {fornecedores.map((fornecedor) => (
-              <tbody>
-                <tr>
+            <tbody>
+              {fornecedores.map((fornecedor) => (
+                <tr key={fornecedor.cnpj}>
                   <td>{fornecedor.idEmpresa}</td>
-                  <td>{fornecedor.nomeFantasia}</td>
+                  <td>{fornecedor.nome_fantasia}</td>
                   <td>{fornecedor.cnpj}</td>
-                  <td>{fornecedor.empresa}</td>
                 </tr>
-              </tbody>
-            ))}
+              ))}
+            </tbody>
           </table>
         </TableContainer>
       </HeaderTable>

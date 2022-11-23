@@ -10,4 +10,3 @@ export const getFornecedores = async (): Promise<any> => {
   const userDate = await client.get('/fornecedores');
   return userDate;
 };
-
