@@ -1,9 +1,11 @@
 import { IoIosAddCircle } from 'react-icons/io';
 import { Buttom } from './styles';
-
-export function AddButtom(): JSX.Element {
+interface AddButtomProps {
+  handleOpen: () => void;
+}
+export function AddButtom({ handleOpen }: AddButtomProps): JSX.Element {
   return (
-    <Buttom>
+    <Buttom onClick={handleOpen}>
       <IoIosAddCircle />
     </Buttom>
   );

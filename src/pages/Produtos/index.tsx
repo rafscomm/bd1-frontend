@@ -4,11 +4,10 @@ import { Categories } from '../../components/Categories';
 import { ProductCard } from '../../components/ProductCard';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
 import { ProdutoInterface } from '../../interfaces/ProdutoInterface';
-import { getProdutos } from '../../services/produtos';
+import { getProdutos, sendProdutos } from '../../services/produtos';
 import { PageContainer } from '../../styles/PageContainer';
 import { Container, ProductList } from './styles';
 import { AddButtom } from '../../components/AddButtom';
-import { DeleteButtom } from '../../components/DeleteButtom';
 import { Modal } from '../../components/Modal';
 
 // const produtos = [
@@ -42,6 +41,11 @@ import { Modal } from '../../components/Modal';
 export function Produtos(): JSX.Element {
   const [produtos, setProdutos] = useState<ProdutoInterface[]>([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [name, setName] = useState('');
+  const [marca, setMarca] = useState('');
+  const [modelo, setModelo] = useState('');
+  const [price, setPrice] = useState('');
+  const [image, setImage] = useState('');
   useEffect(() => {
     const produtosAPI = async () => {
       await getProdutos().then((response) => setProdutos(response.data));
@@ -54,6 +58,12 @@ export function Produtos(): JSX.Element {
   const handleCloseModal = (): void => {
     setModalIsOpen(false);
   };
+
+  const onEnvie = async (): Promise<any> => {
+    const data = { nome: name, marca: marca, modelo: modelo, price: price, imageURL: image };
+    await sendProdutos(JSON.stringify(data));
+  };
+
   return (
     <PageContainer>
       <Sidebar />
@@ -72,14 +82,16 @@ export function Produtos(): JSX.Element {
           })}
         </ProductList>
         {modalIsOpen && (
-          <Modal onClose={handleCloseModal}>
-            <p>Nome:</p>
-            <p>Marca:</p>
-            <p>Modelo:</p>
+          <Modal onClose={handleCloseModal} onEnvie={onEnvie}>
+            <input type="text" placeholder="Nome" value={name} onChange={(e) => setName(e.target.value)} />
+            <input type="text" placeholder="Marca" value={marca} onChange={(e) => setMarca(e.target.value)} />
+            <input type="text" placeholder="Modelo" value={modelo} onChange={(e) => setModelo(e.target.value)} />
+            <input type="text" placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)} />
+            <input type="text" placeholder="Imagem" value={image} onChange={(e) => setImage(e.target.value)} />
           </Modal>
         )}
       </Container>
-      <AddButtom />
+      <AddButtom handleOpen={handleOpenModal} />
     </PageContainer>
   );
 }
