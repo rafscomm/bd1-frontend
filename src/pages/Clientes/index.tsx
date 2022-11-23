@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react';
+
+import { HeaderTable } from '../../components/HeaderTable';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
-import { PageContainer } from '../../styles/PageContainer';
-import { TableContainer } from './styles';
 import { PessoaFisica, PessoaJuridica } from '../../interfaces/ClienteInterface';
 import { getClientes } from '../../services/clientes';
-import { HeaderTable } from '../../components/HeaderTable';
+import { PageContainer } from '../../styles/PageContainer';
+import { TableContainer } from './styles';
 
 export function Clientes(): JSX.Element {
   const [clientes, setClientes] = useState<PessoaFisica[]>([]);
 
   useEffect(() => {
     const showClientes = async () => {
-      await getClientes().then((response) => setClientes(response.data));
+      await getClientes().then((response) => {
+        setClientes(response.data);
+        console.log(response.data);
+      });
     };
     showClientes();
   }, []);
@@ -22,20 +26,24 @@ export function Clientes(): JSX.Element {
       <HeaderTable title="Clientes">
         <TableContainer>
           <table>
-            <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>CPF/CNPJ</th>
-            </tr>
-            <tr>
+            <thead>
+              <tr>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th>Contato</th>
+              </tr>
+            </thead>
+            <tbody>
               {clientes.map((cliente) => (
-                <>
-                  <th>{cliente.idCliente}</th>
-                  <th>{cliente.nome}</th>
-                  <th>{cliente.cpf}</th>
-                </>
+                <tr key={cliente.cpf}>
+                  <>
+                    <th>{cliente.cpf}</th>
+                    <th>{cliente.nome}</th>
+                    <th>{cliente.contato}</th>
+                  </>
+                </tr>
               ))}
-            </tr>
+            </tbody>
           </table>
         </TableContainer>
       </HeaderTable>

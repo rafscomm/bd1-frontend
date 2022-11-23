@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react';
-import { Sidebar } from '../../components/Sidebar/Sidebar';
-import { PageContainer } from '../../styles/PageContainer';
-import { TableContainer } from './styles';
+
 import { HeaderTable } from '../../components/HeaderTable';
+import { Sidebar } from '../../components/Sidebar/Sidebar';
 import { VendasInterface } from '../../interfaces/VendasInterface';
 import { getVendas } from '../../services/vendas';
+import { PageContainer } from '../../styles/PageContainer';
+import { TableContainer } from './styles';
 
 export function Vendas(): JSX.Element {
   const [vendas, setVendas] = useState<VendasInterface[]>([]);
 
   useEffect(() => {
     const vendasAPI = async () => {
-      await getVendas().then((response) => setVendas(response.data));
+      await getVendas().then((response) => {
+        setVendas(response.data);
+        console.log(response.data);
+      });
     };
     vendasAPI();
   }, []);
@@ -27,6 +31,7 @@ export function Vendas(): JSX.Element {
                 <th>ID</th>
                 <th>Cliente</th>
                 <th>Valor</th>
+                <th>Status</th>
               </tr>
             </thead>
             {vendas.map((venda) => (
@@ -35,6 +40,7 @@ export function Vendas(): JSX.Element {
                   <th>{venda.numero}</th>
                   <th>{venda.nome_cliente}</th>
                   <th>{venda.valor}</th>
+                  <th>{venda.status}</th>
                 </tr>
               </tbody>
             ))}
