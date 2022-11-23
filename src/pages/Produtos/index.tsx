@@ -60,8 +60,8 @@ export function Produtos(): JSX.Element {
   };
 
   const onEnvie = async (): Promise<any> => {
-    const data = { nome: name, marca: marca, modelo: modelo, price: price, imageURL: image };
-    await sendProdutos(JSON.stringify(data));
+    const data = { nome: name, marca: marca, modelo: modelo, price: Number(price), imageURL: image };
+    await sendProdutos(data).then((response) => console.log(response.data));
   };
 
   return (

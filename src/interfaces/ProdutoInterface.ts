@@ -5,4 +5,5 @@ export interface ProdutoInterface {
   price: string;
   modelo: string;
   imageURL: string;
+
 }
